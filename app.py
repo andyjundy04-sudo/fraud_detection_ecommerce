@@ -4,7 +4,8 @@ import numpy as np
 import joblib
 import plotly.express as px
 from datetime import datetime
-from my_transformers import * # Memanggil DateTransformer kustom Anda
+import my_transformers
+from my_transformers import DateTransformer # Memanggil DateTransformer kustom Anda
 
 # Konfigurasi Halaman
 st.set_page_config(page_title="FraudGuard: E-commerce Protection", layout="wide")
