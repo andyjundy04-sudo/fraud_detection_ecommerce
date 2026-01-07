@@ -53,7 +53,7 @@ def get_user_input():
 
     dt = datetime.combine(trans_date, trans_time)
 
-    # SESUAIKAN NAMA KEY DENGAN KOLOM TRAINING (13 KOLOM)
+    # SESUAIKAN NAMA KEY DENGAN KOLOM TRAINING (15 KOLOM)
     data = {
         'account_age_days': acc_age,
         'total_transactions_user': total_trans,
