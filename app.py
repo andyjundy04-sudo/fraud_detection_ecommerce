@@ -34,7 +34,7 @@ st.sidebar.header('📝 Detail Transaksi')
 def get_user_input():
     acc_age = st.sidebar.number_input('Account Age (Days)', 0, 10000, 365)
     total_trans = st.sidebar.number_input('Total Transactions User', 0, 5000, 10)
-    # Pastikan nama variabel di sini 'amount' tapi di dictionary 'avg_amount_user'
+    
     amount = st.sidebar.number_input('Average Amount User', 0.0, 50000.0, 500.0)
     shipping_dist = st.sidebar.number_input('Shipping Distance (KM)', 0.0, 20000.0, 15.0)
     
@@ -74,6 +74,16 @@ def get_user_input():
     return pd.DataFrame([data])
 
 user_data_df = get_user_input()
+
+# --- Auto handle transaction_time ---
+if 'transaction_time' not in user_data_df.columns:
+    # kalau kolom tidak ada, isi dengan current datetime
+    user_data_df['transaction_time'] = datetime.now()
+else:
+    # kalau ada, convert ke datetime, salah format jadi NaT
+    user_data_df['transaction_time'] = pd.to_datetime(
+        user_data_df['transaction_time'], errors='coerce'
+    )
 
 # ---------------------------------------------------------
 # HALAMAN UTAMA
