@@ -35,7 +35,7 @@ def get_user_input():
     acc_age = st.sidebar.number_input('Account Age (Days)', 0, 10000, 365)
     total_trans = st.sidebar.number_input('Total Transactions User', 0, 5000, 10)
     
-    amount = st.sidebar.number_input('Average Amount User', 0.0, 50000.0, 500.0)
+    amount = st.sidebar.number_input('Amount User', 0.0, 50000.0, 500.0)
     shipping_dist = st.sidebar.number_input('Shipping Distance (KM)', 0.0, 20000.0, 15.0)
     
     country = st.sidebar.selectbox('Country', ['USA', 'Germany', 'Turkey', 'Berlin', 'New York', 'London'])
