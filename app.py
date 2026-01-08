@@ -114,7 +114,7 @@ with col1:
         x='importance',
         y='feature',
         orientation='h',
-        title="Top 10 Feature Importance"
+        title="Feature Importance"
     )
 
     st.plotly_chart(fig_fi, width="stretch")
