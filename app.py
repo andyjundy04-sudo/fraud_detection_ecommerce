@@ -19,12 +19,14 @@ def load_assets():
     curr_dir = os.path.dirname(__file__)
     model_path = os.path.join(curr_dir, "fraud_model.pkl")
     table_path = os.path.join(curr_dir, "threshold_table.csv")
+    fi_df = pd.read_csv(os.path.join(curr_dir, 'feature_importance_permutation.csv'))
     
     model = joblib.load(model_path)
     threshold_data = pd.read_csv(table_path)
-    return model, threshold_data
+    fi_df = pd.read_csv(fi_df)
+    return model, threshold_data, fi_df
 
-model, threshold_table = load_assets()
+model, threshold_table, fi_df = load_assets()
 
 # ---------------------------------------------------------
 # SIDEBAR
@@ -102,6 +104,20 @@ with col1:
     best_threshold = threshold_tmp.loc[threshold_tmp["total_cost"].idxmin()]["threshold_model"]
     
     st.metric("Threshold Model", round(best_threshold, 3))
+
+    st.subheader("🔍 Feature Importance (Permutation, Global)")
+
+    top_fi = fi_df.head(10)
+
+    fig_fi = px.bar(
+        top_fi,
+        x='importance',
+        y='feature',
+        orientation='h',
+        title="Top 10 Feature Importance"
+    )
+
+    st.plotly_chart(fig_fi, use_container_width=True)
 
 with col2:
     st.subheader("📊 Prediction Results")
