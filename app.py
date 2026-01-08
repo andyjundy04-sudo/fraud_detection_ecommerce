@@ -105,7 +105,7 @@ with col1:
     
     st.metric("Threshold Model", round(best_threshold, 3))
 
-    st.subheader("🔍 Feature Importance (Permutation, Global)")
+    # st.subheader("🔍 Feature Importance (Permutation, Global)")
 
     top_fi = fi_df.head(10)
 
@@ -131,7 +131,7 @@ with col2:
             st.success(f"### HASIL: TRANSAKSI AMAN")
         st.write(f"**Probabilitas Fraud:** {prob:.2%}")
 
-        fig = px.pie(values=[prob, 1-prob], names=['Risk', 'Safe'], hole=0.5,
+        fig = px.pie(values=[prob, 1-prob], names=['Risk', 'Safe'], hole=0.4,
                      color_discrete_sequence=['#e74c3c', '#2ecc71'])
         st.plotly_chart(fig, width="stretch")
 
