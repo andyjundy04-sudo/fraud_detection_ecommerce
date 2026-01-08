@@ -28,6 +28,10 @@ def load_assets():
 
 model, threshold_table, fi_df = load_assets()
 
+st.write("fi_df type:", type(fi_df))
+st.write("threshold_table type:", type(threshold_table))
+st.write("model type:", type(model))
+
 # ---------------------------------------------------------
 # SIDEBAR
 # ---------------------------------------------------------
