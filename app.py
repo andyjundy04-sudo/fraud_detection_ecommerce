@@ -125,7 +125,7 @@ with col1:
     
 with col2:
     st.subheader("📊 Prediction Results")
-    if st.button("Jalankan Deteksi", width="stretch"):
+    if st.button("Jalankan Deteksi", use_container_width=True):
         prob = model.predict_proba(user_data_df)[0, 1]
         is_fraud = prob >= best_threshold
         
