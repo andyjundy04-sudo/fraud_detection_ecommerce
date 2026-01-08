@@ -93,7 +93,7 @@ st.title("🛡️ E-commerce Fraud Detection")
 col1, col2 = st.columns([1, 1.5])
 
 with col1:
-    st.subheader("💰 Business Cost Logic")
+    st.subheader("💰 Business Expected Cost Loss")
     cost_fn = st.number_input("Cost of False Negative ($)", value=650)
     cost_fp = st.number_input("Cost of False Positive ($)", value=30)
 
@@ -101,7 +101,7 @@ with col1:
     threshold_tmp["total_cost"] = (threshold_tmp["FN"] * cost_fn) + (threshold_tmp["FP"] * cost_fp)
     best_threshold = threshold_tmp.loc[threshold_tmp["total_cost"].idxmin()]["threshold_model"]
     
-    st.metric("Optimal Threshold", round(best_threshold, 3))
+    st.metric("Threshold Model", round(best_threshold, 3))
 
 with col2:
     st.subheader("📊 Prediction Results")
