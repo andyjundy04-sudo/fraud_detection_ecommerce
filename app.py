@@ -41,13 +41,10 @@ def get_user_input():
     shipping_dist = st.sidebar.number_input('Shipping Distance (KM)', 0.0, 20000.0, 15.0)
     
     country = st.sidebar.selectbox('Country', ['USA', 'Germany', 'Turkey', 'Berlin', 'New York', 'London'])
-    bin_country = st.sidebar.selectbox('BIN Country', ['USA', 'Germany', 'Turkey', 'UK'])
     channel = st.sidebar.selectbox('Channel', ['Web', 'App'])
     merchant = st.sidebar.selectbox('Merchant Category', ['Electronics', 'Fashion', 'Food', 'Travel', 'Health'])
     
     promo = st.sidebar.checkbox('Promo Used?')
-    avs = st.sidebar.checkbox('AVS Match?')
-    cvv = st.sidebar.checkbox('CVV Result Correct?')
     three_ds = st.sidebar.checkbox('3DS Flag Active?')
     
     trans_date = st.sidebar.date_input('Transaction Date', datetime.now())
@@ -61,12 +58,9 @@ def get_user_input():
         'total_transactions_user': total_trans,
         'amount': amount, # Sesuai dataset asli Anda
         'country': country,
-        'bin_country': bin_country,
         'channel': channel,
         'merchant_category': merchant,
         'promo_used': 1 if promo else 0,
-        'avs_match': 1 if avs else 0,
-        'cvv_result': 1 if cvv else 0,
         'three_ds_flag': 1 if three_ds else 0,
         'shipping_distance_km': shipping_dist,
         'month': dt.month,
